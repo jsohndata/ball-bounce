@@ -7,10 +7,11 @@ canvas.height = window.innerHeight;
 // Configurable settings object
 const config = {
     colors: ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5'],
-    minRadius: 320,
-    maxRadius: 800,
-    pulseFactor: 0.002,  // Much slower pulse rate
-    fadeSpeed: 0.001  // Much slower fade speed for gentle ripple effect
+    minRadius: 20,
+    maxRadius: 600,
+    pulseFactor: 0.0005,  // Much slower pulse rate
+    fadeSpeed: 0.0005,    // Much slower fade speed
+    bounceFactor: 0.5     // Bounce effect factor
 };
 
 class Circle {
@@ -40,7 +41,7 @@ class Circle {
     }
 
     pulse() {
-        this.radius = this.baseRadius + Math.sin(Date.now() * this.pulseFactor) * (this.baseRadius / 2);
+        this.radius = this.baseRadius + Math.sin(Date.now() * this.pulseFactor) * (this.baseRadius * config.bounceFactor);
     }
 
     fade() {
