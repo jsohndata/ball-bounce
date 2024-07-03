@@ -8,9 +8,9 @@ canvas.height = window.innerHeight;
 const config = {
     colors: ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5'],
     minRadius: 20,
-    maxRadius: 80,
-    pulseFactor: 0.005,  // Slower pulse rate
-    fadeSpeed: 0.01
+    maxRadius: 200,
+    pulseFactor: 3.005,  // Slower pulse rate
+    fadeSpeed: 3.01
 };
 
 class Circle {
