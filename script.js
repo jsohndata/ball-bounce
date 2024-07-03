@@ -9,8 +9,8 @@ const config = {
     colors: ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5'],
     minRadius: 320,
     maxRadius: 800,
-    pulseFactor: 0.005,  // Slower pulse rate
-    fadeSpeed: 1 / 480  // Approximately 0.00208 for 8 seconds
+    pulseFactor: 0.002,  // Much slower pulse rate
+    fadeSpeed: 0.001  // Much slower fade speed for gentle ripple effect
 };
 
 class Circle {
