@@ -7,11 +7,11 @@ canvas.height = window.innerHeight;
 // Configurable settings object
 const config = {
     colors: ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5'],
-    minRadius: 20,
-    maxRadius: 600,
-    pulseFactor: 0.0005,  // Much slower pulse rate
-    fadeSpeed: 0.0005,    // Much slower fade speed
-    bounceFactor: 0.5     // Bounce effect factor
+    minRadius: 200,
+    maxRadius: 800,
+    pulseFactor: 0.0001,  // Much slower pulse rate
+    fadeSpeed: 0.00005,    // Much slower fade speed
+    bounceFactor: 0.2      // Gentle bounce effect
 };
 
 class Circle {
