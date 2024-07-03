@@ -9,8 +9,8 @@ const config = {
     colors: ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5'],
     minRadius: 320,
     maxRadius: 800,
-    pulseFactor: 30.005,  // Slower pulse rate
-    fadeSpeed: 30.01
+    pulseFactor: 0.005,  // Slower pulse rate
+    fadeSpeed: 0.0001
 };
 
 class Circle {
