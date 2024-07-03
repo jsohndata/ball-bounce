@@ -6,12 +6,12 @@ canvas.height = window.innerHeight;
 
 // Configurable settings object
 const config = {
-    colors: ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5'],
-    minRadius: 200,
-    maxRadius: 800,
-    pulseFactor: 0.0001,  // Much slower pulse rate
-    fadeSpeed: 0.00005,    // Much slower fade speed
-    bounceFactor: 0.2      // Gentle bounce effect
+    colors: ['rgba(255, 87, 51, 0.5)', 'rgba(51, 255, 87, 0.5)', 'rgba(51, 87, 255, 0.5)', 'rgba(243, 51, 255, 0.5)', 'rgba(51, 255, 245, 0.5)'],
+    minRadius: 20,
+    maxRadius: 400,
+    pulseFactor: 0.000001,  // Much slower pulse rate
+    fadeSpeed: 0.0000005,    // Much slower fade speed
+    bounceFactor: 0.002      // Gentle bounce effect
 };
 
 class Circle {
@@ -50,6 +50,8 @@ class Circle {
 }
 
 const circles = [];
+let stepCounter = 0;
+const stepsToAddCircle = Math.floor(Math.random() * 3) + 2;  // 2 to 4 steps
 
 function addCircle(x, y) {
     const radius = Math.random() * (config.maxRadius - config.minRadius) + config.minRadius;
@@ -72,7 +74,11 @@ function animate() {
 }
 
 function onMouseMove(event) {
-    addCircle(event.clientX, event.clientY);
+    stepCounter++;
+    if (stepCounter % stepsToAddCircle === 0) {
+        addCircle(event.clientX, event.clientY);
+        stepCounter = 0;  // Reset step counter
+    }
 }
 
 animate();
