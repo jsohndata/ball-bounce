@@ -13,7 +13,7 @@ class Circle {
         this.baseRadius = radius;
         this.radius = radius;
         this.color = color;
-        this.pulseFactor = 0.1;
+        this.pulseFactor = 0.005;  // Slower pulse rate
         this.opacity = 1;
     }
 
@@ -33,7 +33,7 @@ class Circle {
     }
 
     pulse() {
-        this.radius = this.baseRadius + Math.sin(Date.now() * this.pulseFactor) * 5;
+        this.radius = this.baseRadius + Math.sin(Date.now() * this.pulseFactor) * (this.baseRadius / 2);  // Slower and more gradual pulsing
     }
 
     fade() {
@@ -44,7 +44,7 @@ class Circle {
 const circles = [];
 
 function addCircle(x, y) {
-    const radius = Math.random() * 20 + 10;
+    const radius = Math.random() * 60 + 20;  // Varying size from really big to normal size
     const color = colors[Math.floor(Math.random() * colors.length)];
     const circle = new Circle(x, y, radius, color);
     circles.push(circle);
