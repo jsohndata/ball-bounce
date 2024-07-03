@@ -4,7 +4,14 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const colors = ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5'];
+// Configurable settings object
+const config = {
+    colors: ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5'],
+    minRadius: 20,
+    maxRadius: 80,
+    pulseFactor: 0.005,  // Slower pulse rate
+    fadeSpeed: 0.01
+};
 
 class Circle {
     constructor(x, y, radius, color) {
@@ -13,7 +20,7 @@ class Circle {
         this.baseRadius = radius;
         this.radius = radius;
         this.color = color;
-        this.pulseFactor = 0.005;  // Slower pulse rate
+        this.pulseFactor = config.pulseFactor;  
         this.opacity = 1;
     }
 
@@ -33,19 +40,19 @@ class Circle {
     }
 
     pulse() {
-        this.radius = this.baseRadius + Math.sin(Date.now() * this.pulseFactor) * (this.baseRadius / 2);  // Slower and more gradual pulsing
+        this.radius = this.baseRadius + Math.sin(Date.now() * this.pulseFactor) * (this.baseRadius / 2);
     }
 
     fade() {
-        this.opacity -= 0.01;
+        this.opacity -= config.fadeSpeed;
     }
 }
 
 const circles = [];
 
 function addCircle(x, y) {
-    const radius = Math.random() * 60 + 20;  // Varying size from really big to normal size
-    const color = colors[Math.floor(Math.random() * colors.length)];
+    const radius = Math.random() * (config.maxRadius - config.minRadius) + config.minRadius;
+    const color = config.colors[Math.floor(Math.random() * config.colors.length)];
     const circle = new Circle(x, y, radius, color);
     circles.push(circle);
 }
