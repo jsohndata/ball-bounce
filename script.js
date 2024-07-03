@@ -10,7 +10,7 @@ const config = {
     minRadius: 320,
     maxRadius: 800,
     pulseFactor: 0.005,  // Slower pulse rate
-    fadeSpeed: 0.0001
+    fadeSpeed: 1 / 480  // Approximately 0.00208 for 8 seconds
 };
 
 class Circle {
