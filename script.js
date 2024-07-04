@@ -7,9 +7,8 @@ canvas.height = window.innerHeight;
 // Configurable settings object
 const config = {
     minRadius: 5,
-    maxRadius: 100,
-    fadeSpeed: 0.01,    // Much slower fade speed
-    bounceFactor: 0.01      // Gentle bounce effect
+    maxRadius: 50,
+    fadeSpeed: 0.0001    // Much slower fade speed
 };
 
 class Circle {
@@ -58,7 +57,7 @@ function getRandomHexColor() {
 }
 
 function getRandomBlurValue() {
-    return Math.random() * (0.9 - 0.5) + 0.5; // Random opacity between 0.2 and 0.9
+    return Math.random() * 10; // Random blur value between 0 and 10
 }
 
 function getRandomOpacity() {
