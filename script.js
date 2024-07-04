@@ -6,7 +6,6 @@ canvas.height = window.innerHeight;
 
 // Configurable settings object
 const config = {
-    colors: ['rgba(255, 87, 51, 0.5)', 'rgba(51, 255, 87, 0.5)', 'rgba(51, 87, 255, 0.5)', 'rgba(243, 51, 255, 0.5)', 'rgba(51, 255, 245, 0.5)'],
     minRadius: 5,
     maxRadius: 50,
     pulseFactor: 0.001,  // Much slower pulse rate
@@ -54,9 +53,18 @@ const circles = [];
 let stepCounter = 0;
 const stepsToAddCircle = Math.floor(Math.random() * 3) + 2;  // 2 to 4 steps
 
+function getRandomHexColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 function addCircle(x, y) {
     const radius = Math.random() * (config.maxRadius - config.minRadius) + config.minRadius;
-    const color = config.colors[Math.floor(Math.random() * config.colors.length)];
+    const color = getRandomHexColor();
     const circle = new Circle(x, y, radius, color);
     circles.push(circle);
 }
