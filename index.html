@@ -5,21 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 
-    <title>Psychedelic Mouse Trail</title>
+    <link rel="stylesheet" type="text/css" href="https://jsohndata.github.io/no-tiempo/src/styles/no-tiempo.mini.css">
+    <title>🫥 Pulsating Circle</title>
     <style>
         body, html {
+            width: 100vw; 
+            height: 100vh;
+            font-family: "Montserrat", sans-serif;            
             margin: 0;
             padding: 0;
             overflow: hidden;
             background-color: black;
+            background: radial-gradient(circle, rgb(52, 23, 43) 20%, rgb(30, 30, 66) 30%, rgb(2, 2, 12) 50%);
+            overflow: hidden; /* Prevent scrolling */
+            touch-action: none; /* Disable touch actions */
         }
         canvas {
             display: block;
         }
+
+        
     </style>
 </head>
 <body>
     <canvas id="canvas"></canvas>
+
+    <footer>
+        <p id="mozarts-ghost"><a href="https://jsohndata.github.io/no-tiempo/mozartsghost?id=6"
+            alt="Click on it and press control-shift."
+            title="Click on it and press control-shift.">π</a></p>
+        <p id="github-link"><a href="https://github.com/jsohndata/pulsating-circle" target="_blank">Code in GitHub</a></p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
