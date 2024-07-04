@@ -8,9 +8,9 @@ canvas.height = window.innerHeight;
 const config = {
     minRadius: 5,
     maxRadius: 50,
-    pulseFactor: 0.001,  // Much slower pulse rate
+    pulseFactor: 0.1,  // Much slower pulse rate
     fadeSpeed: 0.0001,    // Much slower fade speed
-    bounceFactor: 0.01      // Gentle bounce effect
+    bounceFactor: 0.1      // Gentle bounce effect
 };
 
 class Circle {
