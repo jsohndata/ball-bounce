@@ -8,17 +8,21 @@ canvas.height = window.innerHeight;
 const config = {
     minRadius: 5,
     maxRadius: 50,
-    fadeSpeed: 0.0001    // Much slower fade speed
+    pulseFactor: 0.1,  // Much slower pulse rate
+    fadeSpeed: 0.0001,    // Much slower fade speed
+    bounceFactor: 0.01      // Gentle bounce effect
 };
 
 class Circle {
     constructor(x, y, radius, color, blur, opacity) {
         this.x = x;
         this.y = y;
+        this.baseRadius = radius;
         this.radius = radius;
         this.color = color;
         this.blur = blur;
         this.opacity = opacity;
+        this.pulseFactor = config.pulseFactor;  
         this.className = 'object'; // Add class name property
     }
 
@@ -34,8 +38,13 @@ class Circle {
     }
 
     update() {
+        this.pulse();
         this.draw();
         this.fade();
+    }
+
+    pulse() {
+        this.radius = this.baseRadius + Math.sin(Date.now() * this.pulseFactor) * (this.baseRadius * config.bounceFactor);
     }
 
     fade() {
