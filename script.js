@@ -7,7 +7,7 @@ canvas.height = window.innerHeight;
 // Configurable settings object
 const config = {
     minRadius: 5,
-    maxRadius: 50,
+    maxRadius: 200,
     fadeSpeed: 0.0001,    // Much slower fade speed
     bounceFactor: 0.01      // Gentle bounce effect
 };
@@ -58,7 +58,7 @@ function getRandomHexColor() {
 }
 
 function getRandomBlurValue() {
-    return Math.random() * (0.9 - 0.2) + 0.2; // Random opacity between 0.2 and 0.9
+    return Math.random() * (0.9 - 0.5) + 0.5; // Random opacity between 0.2 and 0.9
 }
 
 function getRandomOpacity() {
