@@ -66,7 +66,7 @@ function getRandomHexColor() {
 }
 
 function getRandomBlurValue() {
-    return Math.random() * 10; // Random blur value between 0 and 10
+    return Math.random() * (0.9 - 0.5) + 0.5; // Random opacity between 0.5 and 0.9
 }
 
 function getRandomOpacity() {
