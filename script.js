@@ -6,20 +6,23 @@ canvas.height = window.innerHeight;
 
 // Configurable settings object
 const config = {
-    minRadius: 5,
-    maxRadius: 50,
-    fadeSpeed: 0.001    // Fade speed
+    colors: ['rgba(255, 87, 51, 0.5)', 'rgba(51, 255, 87, 0.5)', 'rgba(51, 87, 255, 0.5)', 'rgba(243, 51, 255, 0.5)', 'rgba(51, 255, 245, 0.5)'],
+    minRadius: 20,
+    maxRadius: 100,
+    pulseFactor: 0.001,  // Much slower pulse rate
+    fadeSpeed: 0.001,    // Much slower fade speed
+    bounceFactor: 0.08      // Gentle bounce effect
 };
 
 class Circle {
-    constructor(x, y, radius, color, blur, opacity) {
+    constructor(x, y, radius, color) {
         this.x = x;
         this.y = y;
+        this.baseRadius = radius;
         this.radius = radius;
         this.color = color;
-        this.blur = blur;
-        this.opacity = opacity;
-        this.className = 'object'; // Add class name property
+        this.pulseFactor = config.pulseFactor;  
+        this.opacity = 1;
     }
 
     draw() {
@@ -27,15 +30,18 @@ class Circle {
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctx.fillStyle = this.color;
         ctx.globalAlpha = this.opacity;
-        ctx.filter = `blur(${this.blur}px)`;
         ctx.fill();
         ctx.closePath();
-        ctx.filter = 'none'; // Reset the filter
     }
 
     update() {
+        this.pulse();
         this.draw();
         this.fade();
+    }
+
+    pulse() {
+        this.radius = this.baseRadius + Math.sin(Date.now() * this.pulseFactor) * (this.baseRadius * config.bounceFactor);
     }
 
     fade() {
@@ -47,29 +53,10 @@ const circles = [];
 let stepCounter = 0;
 const stepsToAddCircle = Math.floor(Math.random() * 3) + 2;  // 2 to 4 steps
 
-function getRandomHexColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
-function getRandomBlurValue() {
-    return Math.random() * 10; // Random blur value between 0 and 10
-}
-
-function getRandomOpacity() {
-    return Math.random() * (0.9 - 0.2) + 0.2; // Random opacity between 0.2 and 0.9
-}
-
 function addCircle(x, y) {
     const radius = Math.random() * (config.maxRadius - config.minRadius) + config.minRadius;
-    const color = getRandomHexColor();
-    const blur = getRandomBlurValue();
-    const opacity = getRandomOpacity();
-    const circle = new Circle(x, y, radius, color, blur, opacity);
+    const color = config.colors[Math.floor(Math.random() * config.colors.length)];
+    const circle = new Circle(x, y, radius, color);
     circles.push(circle);
 }
 
