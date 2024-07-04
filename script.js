@@ -14,15 +14,15 @@ const config = {
 };
 
 class Circle {
-    constructor(x, y, radius, color, blur) {
+    constructor(x, y, radius, color, blur, opacity) {
         this.x = x;
         this.y = y;
         this.baseRadius = radius;
         this.radius = radius;
         this.color = color;
         this.blur = blur;
+        this.opacity = opacity;
         this.pulseFactor = config.pulseFactor;  
-        this.opacity = 1;
         this.className = 'object'; // Add class name property
     }
 
@@ -69,11 +69,16 @@ function getRandomBlurValue() {
     return Math.random() * 10; // Random blur value between 0 and 10
 }
 
+function getRandomOpacity() {
+    return Math.random() * (0.9 - 0.2) + 0.2; // Random opacity between 0.2 and 0.9
+}
+
 function addCircle(x, y) {
     const radius = Math.random() * (config.maxRadius - config.minRadius) + config.minRadius;
     const color = getRandomHexColor();
     const blur = getRandomBlurValue();
-    const circle = new Circle(x, y, radius, color, blur);
+    const opacity = getRandomOpacity();
+    const circle = new Circle(x, y, radius, color, blur, opacity);
     circles.push(circle);
 }
 
