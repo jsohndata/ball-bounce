@@ -10,7 +10,7 @@ const config = {
     minRadius: 20,
     maxRadius: 400,
     pulseFactor: 0.001,  // Much slower pulse rate
-    fadeSpeed: 0.0005,    // Much slower fade speed
+    fadeSpeed: 0.001,    // Much slower fade speed
     bounceFactor: 0.008      // Gentle bounce effect
 };
 
