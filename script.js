@@ -11,7 +11,7 @@ const config = {
     maxRadius: 100,
     pulseFactor: 0.01,  // Much slower pulse rate
     fadeSpeed: 0.00005,    // Much slower fade speed
-    bounceFactor: 1.1      // Gentle bounce effect
+    bounceFactor: 4.1      // Gentle bounce effect
 };
 
 class Circle {
