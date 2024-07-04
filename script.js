@@ -23,6 +23,7 @@ class Circle {
         this.color = color;
         this.pulseFactor = config.pulseFactor;  
         this.opacity = 1;
+        this.className = 'object'; // Add class name property
     }
 
     draw() {
