@@ -1,3 +1,21 @@
-.object {
-    border: 1px solid #fff;
+body, html {
+    width: 100vw; 
+    height: 100vh;
+    font-family: "Montserrat", sans-serif;            
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    background: radial-gradient(circle, rgb(52, 23, 43) 20%, rgb(30, 30, 66) 30%, rgb(2, 2, 12) 50%);
+    overflow: hidden; /* Prevent scrolling */
+    touch-action: none; /* Disable touch actions */
+}
+canvas {
+    display: block;
+}
+
+#github-link a:link,
+#github-link a:visited {
+    font-size: 0.9rem;
+    color: rgba(236, 25, 120, 0.674);
 }
