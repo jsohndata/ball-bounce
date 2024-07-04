@@ -23,22 +23,6 @@ class Circle {
         this.color = color;
         this.pulseFactor = config.pulseFactor;  
         this.opacity = 1;
-        this.htmlElement = this.createHtmlElement();
-    }
-
-    createHtmlElement() {
-        const circleElement = document.createElement('div');
-        circleElement.style.position = 'absolute';
-        circleElement.style.width = this.radius * 2 + 'px';
-        circleElement.style.height = this.radius * 2 + 'px';
-        circleElement.style.borderRadius = '50%';
-        circleElement.style.backgroundColor = this.color;
-        circleElement.style.opacity = this.opacity;
-        circleElement.style.left = this.x - this.radius + 'px';
-        circleElement.style.top = this.y - this.radius + 'px';
-        circleElement.classList.add('circle'); // Add the 'circle' class
-        document.body.appendChild(circleElement);
-        return circleElement;
     }
 
     draw() {
@@ -54,7 +38,6 @@ class Circle {
         this.pulse();
         this.draw();
         this.fade();
-        this.updateHtmlElement();
     }
 
     pulse() {
@@ -63,14 +46,6 @@ class Circle {
 
     fade() {
         this.opacity -= config.fadeSpeed;
-    }
-
-    updateHtmlElement() {
-        this.htmlElement.style.width = this.radius * 2 + 'px';
-        this.htmlElement.style.height = this.radius * 2 + 'px';
-        this.htmlElement.style.opacity = this.opacity;
-        this.htmlElement.style.left = this.x - this.radius + 'px';
-        this.htmlElement.style.top = this.y - this.radius + 'px';
     }
 }
 
@@ -93,7 +68,6 @@ function animate() {
         if (circle.opacity > 0) {
             circle.update();
         } else {
-            document.body.removeChild(circle.htmlElement); // Remove the HTML element
             circles.splice(index, 1);
         }
     });
