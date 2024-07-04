@@ -7,8 +7,8 @@ canvas.height = window.innerHeight;
 // Configurable settings object
 const config = {
     minRadius: 5,
-    maxRadius: 200,
-    fadeSpeed: 0.001,    // Much slower fade speed
+    maxRadius: 100,
+    fadeSpeed: 0.01,    // Much slower fade speed
     bounceFactor: 0.01      // Gentle bounce effect
 };
 
